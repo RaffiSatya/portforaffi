@@ -46,24 +46,63 @@
 
         nav {
             display: flex;
-            justify-content: center;
+            justify-content: center; /* Centering the navigation bar */
+            align-items: center;
             background: var(--primary-color);
-            padding: 10px 0;
+            padding: 10px 20px;
             position: sticky;
             top: 0;
             z-index: 1000;
         }
 
-        nav a {
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
             color: var(--text-color);
-            margin: 0 15px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
             text-decoration: none;
             font-weight: bold;
             transition: color 0.3s ease;
         }
 
-        nav a:hover {
+        .nav-links a:hover {
             color: #66fcf1;
+        }
+
+        @media (max-width: 768px) {
+            .menu-icon {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                gap: 10px;
+                position: absolute;
+                top: 50px;
+                right: 20px;
+                background: var(--primary-color);
+                padding: 15px;
+                border-radius: 5px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                margin: 0;
+            }
         }
 
         section {
@@ -144,14 +183,17 @@
         <p>Sleman, Yogyakarta | 0853-2672-9247 | raffisatyan@gmail.com</p>
     </header>
     <nav>
-        <a href="#about">About Me</a>
-        <a href="#poster">Poster</a>
-        <a href="#logo">Logo</a>
-        <a href="#feeds">Feeds</a>
-        <a href="#vector">Vector Art</a>
-        <a href="#photo">Photo Manipulation</a>
-        <a href="#other">Other</a>
-        <a href="#contact">Contact</a>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="nav-links">
+            <a href="#about">About Me</a>
+            <a href="#poster">Poster</a>
+            <a href="#logo">Logo</a>
+            <a href="#feeds">Feeds</a>
+            <a href="#vector">Vector Art</a>
+            <a href="#photo">Photo Manipulation</a>
+            <a href="#other">Other</a>
+            <a href="#contact">Contact</a>
+        </div>
     </nav>
     <section id="about">
         <h2>About Me</h2>
@@ -225,12 +267,17 @@
     </section>
     <section id="contact">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:raffisatya@example.com" style="color: #66fcf1;">raffisatyan@gmail.com</a></p>
-        <p>Instagram: <a href="https:/instagram.com/raffisatyan" style="color: #66fcf1;">raffisatyan</a></p>
-        
+        <p>Email: <a href="mailto:raffisatyan@gmail.com" style="color: #66fcf1;">raffisatyan@gmail.com</a></p>
+        <p>Instagram: <a href="https://instagram.com/raffisatyan" style="color: #66fcf1;">raffisatyan</a></p>
     </section>
     <footer>
         <p>&copy; 2025 Raffi Satya Nugraha. All rights reserved.</p>
     </footer>
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
